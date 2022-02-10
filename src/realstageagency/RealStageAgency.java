@@ -43,27 +43,33 @@ public class RealStageAgency implements EstateType {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        if (validateDTD() && validateXSD()){
+            readXML();
+        };
+    }
 
-//        File xsdFile = new File("estates.xsd");
-//try {
-//            Path xmlPath = Paths.get("estates.xml");
-//            Reader reader = Files.newBufferedReader(xmlPath);
-//            String schemaLang = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-//            SchemaFactory factory = SchemaFactory.newInstance(schemaLang);
-//            Schema schema = factory.newSchema(xsdFile);
-//            Validator validator = schema.newValidator();
-//            SAXSource source = new SAXSource(new InputSource(reader));
-//            validator.validate(source);
-//            
-//            System.out.println("The document was validated OK");
-//        } catch (SAXException e) {
-//            System.out.println("Error with SAX "+e);
-//        } catch (IOException ex) {
-//            System.out.println(ex.getMessage());
-//        } 
+    private static void readXML() {
+        SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         try {
+            SAXParser saxParser = saxParserFactory.newSAXParser();
+            EstatesHandler handler = new EstatesHandler();
+            saxParser.parse(new File("estates.xml"), handler);
+            
+            //Get Bank list 
+            ArrayList<Estate> estates = (ArrayList<Estate>) handler.getEstates();
+            
+            //print Bank information 
+            System.out.println(estates.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    private static boolean validateDTD() {
+        // TODO code application logic here
+        
+        try {
+            
             SAXParserFactory factory = SAXParserFactory.newInstance();
             factory.setValidating(true);
             factory.setNamespaceAware(true);
@@ -73,40 +79,47 @@ public class RealStageAgency implements EstateType {
             XMLReader reader = parser.getXMLReader();
             reader.setErrorHandler(
                     new ErrorHandler() {
-                public void warning(SAXParseException e) throws SAXException {
-                    System.out.println("WARNING : " + e.getMessage()); // do nothing
-                }
-
-                public void error(SAXParseException e) throws SAXException {
-                    System.out.println("ERROR : " + e.getMessage());
-                    throw e;
-                }
-
-                public void fatalError(SAXParseException e) throws SAXException {
-                    System.out.println("FATAL : " + e.getMessage());
-                    throw e;
-                }
-            }
+                        public void warning(SAXParseException e) throws SAXException {
+                            System.out.println("WARNING : " + e.getMessage()); // do nothing
+                        }
+                        
+                        public void error(SAXParseException e) throws SAXException {
+                            System.out.println("ERROR : " + e.getMessage());
+                            throw e;
+                        }
+                        
+                        public void fatalError(SAXParseException e) throws SAXException {
+                            System.out.println("FATAL : " + e.getMessage());
+                            throw e;
+                        }
+                    }
             );
-            reader.parse(new InputSource("estates.xml"));
-            SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
-            try {
-                SAXParser saxParser = saxParserFactory.newSAXParser();
-                EstatesHandler handler = new EstatesHandler();
-                saxParser.parse(new File("estates.xml"), handler);
-
-                //Get Bank list 
-                ArrayList<Estate> estates = (ArrayList<Estate>) handler.getEstates();
-
-                //print Bank information 
-                System.out.println(estates.toString());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return false;
+    }
 
+    private static boolean validateXSD() {
+        File xsdFile = new File("estates.xsd");
+        try {
+            Path xmlPath = Paths.get("estates.xml");
+            Reader reader = Files.newBufferedReader(xmlPath);
+            String schemaLang = XMLConstants.W3C_XML_SCHEMA_NS_URI;
+            SchemaFactory factory = SchemaFactory.newInstance(schemaLang);
+            Schema schema = factory.newSchema(xsdFile);
+            Validator validator = schema.newValidator();
+            SAXSource source = new SAXSource(new InputSource(reader));
+            validator.validate(source);
+
+            return true;
+        } catch (SAXException e) {
+            System.out.println("Error with SAX " + e);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return false;
     }
 
     public static void test() {
