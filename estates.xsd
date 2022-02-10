@@ -1,0 +1,28 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Estates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Estate" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:short" name="Surface"/>
+              <xs:element type="xs:int" name="Price"/>
+              <xs:element name="Addres">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="Street"/>
+                    <xs:element type="xs:byte" name="Number"/>
+                    <xs:element type="xs:byte" name="Floor"/>
+                    <xs:element type="xs:byte" name="Door"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="type" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

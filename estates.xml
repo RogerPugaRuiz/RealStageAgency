@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE Estates SYSTEM "estatesDTD.dtd">
+
+<Estates>
+    <Estate type="House">
+        <Surface>144</Surface>
+        <Price>20000</Price>
+        <Addres>
+            <Street>Verge del pilar</Street>
+            <Number>3</Number>
+            <Floor>2</Floor>
+            <Door>4</Door>
+        </Addres>
+    </Estate>
+    <Estate type="Premises">
+        <Surface>200</Surface>
+        <Price>35000</Price>
+        <Addres>
+            <Street>Pi Maragall</Street>
+            <Number>7</Number>
+            <Floor>3</Floor>
+            <Door>2</Door>
+        </Addres>
+    </Estate>
+    <Estate type="Premises">
+        <Surface>45</Surface>
+        <Price>15000</Price>
+        <Addres>
+            <Street>Sant pius X</Street>
+            <Number>2</Number>
+            <Floor>1</Floor>
+            <Door>1</Door>
+        </Addres>
+    </Estate>
+    
+</Estates>

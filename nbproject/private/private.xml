@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/roger/NetBeansProjects/RealStageAgency/src/model/Estate.java</file>
+            <file>file:/home/roger/NetBeansProjects/RealStageAgency/build.xml</file>
+            <file>file:/home/roger/NetBeansProjects/RealStageAgency/src/model/EstateType.java</file>
+            <file>file:/home/roger/NetBeansProjects/RealStageAgency/src/handler/AddresHandler.java</file>
+            <file>file:/home/roger/NetBeansProjects/RealStageAgency/estatesDTD.dtd</file>
+            <file>file:/home/roger/NetBeansProjects/RealStageAgency/src/handler/EstatesHandler.java</file>
+            <file>file:/home/roger/NetBeansProjects/RealStageAgency/estates.xsd</file>
+            <file>file:/home/roger/NetBeansProjects/RealStageAgency/estates.xml</file>
+            <file>file:/home/roger/NetBeansProjects/RealStageAgency/src/model/Addres.java</file>
+            <file>file:/home/roger/NetBeansProjects/RealStageAgency/src/realstageagency/RealStageAgency.java</file>
+        </group>
+    </open-files>
+</project-private>
