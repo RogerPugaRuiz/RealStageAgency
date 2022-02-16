@@ -32,7 +32,7 @@ public class EstatesHandler extends DefaultHandler{
     private boolean bAddres;
     private boolean bPrice;
     
-        // Parser methods
+    // Parser methods
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
